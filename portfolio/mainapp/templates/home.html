@@ -1,0 +1,14 @@
+<!-- Specify which template we want to extend (ie. the base template.)-->
+{% extends 'base.html' %}
+<!-- Load the static css file to use with this page. -->
+{% load static %}
+
+<!-- New content to override base template with. -->
+
+{% block title %}
+Home page
+{% endblock title %}
+
+{% block content %}
+<p> This is the home page</p>
+{% endblock content %}
