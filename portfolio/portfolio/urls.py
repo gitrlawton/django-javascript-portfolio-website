@@ -1,22 +1,19 @@
-"""
-URL configuration for portfolio project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 
+# Import the include function.
+from django.urls import include
+# In order to access the difference images on the server.
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
+    # Already written by Django.  This will take you to the admin portal.
     path('admin/', admin.site.urls),
-]
+    # Written by me.  This basically says, for any other path extension, 
+    # refer to the mainapp.urls file (which I wrote) to determine which view
+    # to render.
+    path("", include("mainapp.urls"))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# The above concatenation is what we imported static and settings for (to
+# access the project images (ie. media).)
