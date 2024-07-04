@@ -1,0 +1,20 @@
+<!-- Specify which template we want to extend (ie. the base template.)-->
+{% extends 'base.html' %}
+<!-- Load the static css file to use with this page. -->
+{% load static %}
+
+
+
+<!-- New content to override base template with. -->
+
+{% block title %}
+Contact page
+{% endblock title %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock extrahead %}
+
+{% block content %}
+<p> This is the contact page</p>
+{% endblock content %}
