@@ -20,4 +20,9 @@ def contact(request):
 
 # This view takes in a request and a project id...
 def project(request, id):
-    return render(request, "project.html")
+    # Search for a Project model whose primary key is equal to the id passed,
+    # if not found, render a 404 not found page...
+    project = get_object_or_404(Project, pk=id)
+    # ...and pass the value in project to the project.html template via
+    # a dictionary.
+    return render(request, "project.html", {"project": project})
